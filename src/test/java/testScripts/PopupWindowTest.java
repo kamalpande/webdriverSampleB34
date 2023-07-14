@@ -14,9 +14,11 @@ public class PopupWindowTest {
 		
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.stqatools.com/demo/Windows.php");
+		driver.manage().window().maximize();
 		String parentWin = driver.getWindowHandle();
 		System.out.println("Parent Handle" +parentWin );
-		driver.findElement(By.xpath("//button[contains(text(),'new Tab')]")).click();
+		driver.findElement(By.xpath("//button[contains(text(),' new Tab ')]")).click();
+		driver.manage().window().maximize();
 		Set<String> tabs = driver.getWindowHandles();
 		System.out.println("" +tabs.size());
 		for(String child: tabs) {
@@ -25,7 +27,7 @@ public class PopupWindowTest {
 			{
 				driver.switchTo().window(child);
 				Thread.sleep(5000);
-				driver.findElement(By.xpath("(//span[@class='menu-item-text'])[2]")).click();
+				driver.findElement(By.xpath("(//span[@class='menu-text'])[2]")).click();
 			}
 		}
 		

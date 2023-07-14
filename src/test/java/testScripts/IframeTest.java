@@ -3,6 +3,7 @@ package testScripts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class IframeTest {
 
@@ -10,6 +11,7 @@ public class IframeTest {
 		// TODO Auto-generated method stub
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://chercher.tech/practice/frames-example-selenium-webdriver");
+		driver.manage().window().maximize();
 		String strlb1 = driver.findElement(By.xpath("//label/span")).getText();
 		System.out.println("Label from main page...." + strlb1);
 		driver.switchTo().frame("frame1");
@@ -28,6 +30,12 @@ public class IframeTest {
 		driver.switchTo().defaultContent();
 		//from  main page to frame 2
 		System.out.println(driver.findElement(By.xpath("//label/span")).getText());
+		driver.switchTo().frame("frame2");
+		//driver.findElement(By.id("animals"))
+		Select senSel = new Select(driver.findElement(By.id("animals")));
+		senSel.selectByValue("babycat");
+		
+		
 		
 	}
 

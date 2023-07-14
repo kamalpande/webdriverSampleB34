@@ -13,7 +13,7 @@ public class WebTableTest {
 		driver.get("https://automationbookstore.dev/");
 		Thread.sleep(2000);
 		WebElement closeIcon = driver.findElement(By.xpath("//a[@title='Clear text']"));
-		System.out.println("closeIcon" + closeIcon.isDisplayed());
+		System.out.println("closeIcon.." + closeIcon.isDisplayed());
 		driver.findElement(By.cssSelector("#searchBar")).sendKeys("test");
 		Thread.sleep(2000);
 		closeIcon = driver.findElement(By.xpath("//a[@title='Clear text']"));
@@ -22,7 +22,7 @@ public class WebTableTest {
 			closeIcon.click();
 
 	     }
-		System.out.println("close Icon after text" + closeIcon.isDisplayed());
+		System.out.println("close Icon after text.." + closeIcon.isDisplayed());
 
 }
 }

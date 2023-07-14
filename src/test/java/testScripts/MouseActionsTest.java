@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class MouseActionsTest {
 		WebDriver driver = new ChromeDriver();
 		Actions actions = new Actions(driver);
 		driver.get("https://demo.opencart.com/");
+		driver.manage().window().maximize();
 		WebElement srchBox = driver.findElement(By.name("search"));
 		srchBox.sendKeys("phone");
 		TakesScreenshot screen = (TakesScreenshot)driver;
@@ -29,6 +31,10 @@ public class MouseActionsTest {
 		actions.moveToElement(menu).click(subMenu).build().perform();
 		Thread.sleep(2000);
 		WebElement img = driver.findElement(By.xpath("(//button[@data-bs-original-title='Add to Cart'])[1]"));
+		Thread.sleep(2000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,250)", "");
+		Thread.sleep(2000);
 		File imgSrc = img.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(imgSrc, new File("C:\\Screenshots\\Imagescreen.png"));
 	}

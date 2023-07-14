@@ -16,11 +16,16 @@ public class AlertTest {
 		System.out.println(alert.getText());
 		alert.accept();
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//button[@class='btn btn-default btn-lg'][1]']")).click();
+		driver.findElement(By.xpath("(//button[@class='btn btn-default btn-lg'])[1]")).click();
 		Alert alert1 = driver.switchTo().alert();
 		System.out.println(alert1.getText());
         alert1.dismiss();
-       // driver.findElement(By.xpath("//button[@class='btn btn-default btn-lg'][2]']")).click();
+        driver.findElement(By.xpath("(//button[@class='btn btn-default btn-lg'])[2]")).click();
+        Alert prompt = driver.switchTo().alert();
+        String text = prompt.getText();
+        System.out.println("msg...." + text);
+        prompt.sendKeys("TestUser");
+        prompt.accept();
 		//Alert alert2 = driver.switchTo().alert().sendKeys("test");
 		//System.out.println(alert2.getText());
 		
